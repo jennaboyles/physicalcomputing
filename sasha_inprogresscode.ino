@@ -1,6 +1,9 @@
 
 // variable to hold sensor value
 int sensorValue;
+int sensorValue1;
+int sensorValue2;
+
 // variable to calibrate low value
 int sensorLow = 1023;
 // variable to calibrate high value
@@ -11,6 +14,10 @@ const int ledPin = 13;
 void setup() {
   
   Serial.begin(9600); // initialize serial communications
+
+  sensorValue = analogRead(A0);
+  sensorValue1 = analogRead(A0)/2;
+  sensorValue2 = analogRead(A0)*2;
   
   // Make the LED pin an output and turn it on
   pinMode(ledPin, OUTPUT);
@@ -27,9 +34,6 @@ void setup() {
     if (sensorValue < sensorLow) {
       sensorLow = sensorValue;
     }
-    if (sensorValue < 800) {
-      sensorValue= 
-    }
   }
   // turn the LED off, signaling the end of the calibration period
   digitalWrite(ledPin, LOW);
@@ -37,7 +41,6 @@ void setup() {
 
 void loop() {
   //read the input from A0 and store it in a variable
-  sensorValue = analogRead(A0);
 
   // map the sensor values to a wide range of pitches
   int pitch = map(sensorValue, sensorLow, sensorHigh, 33, 82);
@@ -48,5 +51,5 @@ void loop() {
   // wait for a moment
   delay(10);
   
-  Serial.println(sensorValue);  //print input values from sensor to serial monitor
+  Serial.println(sensorValue1,sensorValue,sensorValue2);  //print input values from sensor to serial monitor
 }
