@@ -8,9 +8,10 @@ int sensorHigh = 0;
 // LED pin
 const int ledPin = 13;
 
-Serial.begin(9600);
-
 void setup() {
+  
+  Serial.begin(9600); // initialize serial communications
+  
   // Make the LED pin an output and turn it on
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, HIGH);
@@ -47,5 +48,5 @@ void loop() {
   // wait for a moment
   delay(10);
   
-  Serial.println(sensorValue);
+  Serial.println(sensorValue);  //print input values from sensor to serial monitor
 }
