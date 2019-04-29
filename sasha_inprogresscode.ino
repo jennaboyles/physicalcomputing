@@ -8,6 +8,8 @@ int sensorHigh = 0;
 // LED pin
 const int ledPin = 13;
 
+Serial.begin(9600);
+
 void setup() {
   // Make the LED pin an output and turn it on
   pinMode(ledPin, OUTPUT);
@@ -44,4 +46,6 @@ void loop() {
 
   // wait for a moment
   delay(10);
+  
+  Serial.println(sensorValue);
 }
